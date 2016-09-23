@@ -4,18 +4,26 @@ body {
 
 .elapsed-time {
   font-size: 13vw; }
-  .elapsed-time .hours:after, .elapsed-time .minutes:after {
-    content: ":";
-    padding-left: 20px; }
-  .elapsed-time #myProgress {
-    position: relative;
-    width: 100%;
-    height: 30px;
-    background-color: #ddd; }
-  .elapsed-time #myBar {
-    position: absolute;
-    width: 30%;
-    height: 100%;
-    background-color: #4CAF50; }
+
+.hours:after, .minutes:after {
+  content: ":";
+  padding-left: 20px; }
+
+#myProgress {
+  position: relative;
+  width: 100%;
+  height: 30px;
+  background-color: #ddd; }
+
+#myBar {
+  position: absolute;
+  width: 10%;
+  height: 100%;
+  background-color: blue; }
+
+#label {
+  text-align: center;
+  line-height: 30px;
+  color: white; }
 
 /*# sourceMappingURL=styles.css.map */

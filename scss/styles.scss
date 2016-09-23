@@ -1,11 +1,12 @@
 body{
-
+  // background-color: orange;
   font-family: helvetica;
   text-align: center;
 }
 
 .elapsed-time{
   font-size: 13vw;
+}
 
 .hours:after, .minutes:after{
   content: ":";
@@ -22,15 +23,17 @@ body{
 
 #myBar {
   position: absolute;
-  width: 30%;
+  width: 10%;
   height: 100%;
-  background-color: #4CAF50;
+  background-color: blue;
 }
 
-
-
-
+#label {
+  text-align: center;
+  line-height: 30px;
+  color: white;
 }
+
 
 button{
 

@@ -37,12 +37,6 @@ Set up your files as such, this is a good programming practice.
   // var startTime;
   // var currentText;
 
-  function colorHoverHandler(){
-    console.log();
-    // toggleButton();
-    window.setInterval(logElapsedTime, 1000);
-  }
-
   function logElapsedTime(){
     var currentTime = new Date();
     // var elapsedTime = currentTime ;
@@ -58,11 +52,12 @@ http://www.w3schools.com/jsref/jsref_getminutes.asp
 */
   var minutePercentage = function myFunction(number) {
       var d = new Date();
-      var n = d.getMinutes()/60*100;
+      var n = (d.getSeconds()/60*100).toFixed();
+      document.getElementById('myBar').style.width = n + '%';
       console.log(n);
   }
-window.setInterval(minutePercentage, 1000);
 
+// window.setInterval(minutePercentage, 1000);
 
   function millisecondsToInterval(ms){ //1000
     var msLeft = ms; // => 1000
@@ -83,6 +78,20 @@ window.setInterval(minutePercentage, 1000);
     seconds.textContent = ("0" + interval[2]).slice(-2);
   }
 
+  function displayInterHex(interval){
+    hours.textContent = ("0" + interval[0].toString(16)).slice(-2);
+    minutes.textContent = ("0" + interval[1].toString(16)).slice(-2);
+    seconds.textContent = ("0" + interval[2].toString(16)).slice(-2);
+  }
+
+  function colorHoverHandler(){
+    console.log();
+    // toggleButton();
+    window.setInterval(logElapsedTime, 1000);
+  }
+
+
+
   // function toggleButton(){
   //   currentText = colorHover.textContent;
   // }
@@ -94,19 +103,6 @@ logElapsedTime();
 
   colorHover.addEventListener('mouseover', colorHoverHandler);
 
-  function move() {
-      var elem = document.getElementById("myBar");
-      var width = 1;
-      var id = setInterval(frame, 10);
-      function frame() {
-          if (width >= 100) {
-              clearInterval(id);
-          } else {
-              width++;
-              elem.style.width = width + '%';
-          }
-      }
-  }
 
 
 }());
