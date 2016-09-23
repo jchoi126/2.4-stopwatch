@@ -1,6 +1,11 @@
 body {
   font-family: helvetica;
-  text-align: center; }
+  text-align: center;
+  transition: all 0.5s; }
+
+h1 {
+  color: #9599A4;
+  opacity: .4; }
 
 .elapsed-time {
   font-size: 13vw; }
@@ -13,17 +18,15 @@ body {
   position: relative;
   width: 100%;
   height: 30px;
-  background-color: #ddd; }
+  margin-top: 72px;
+  background-color: white;
+  margin-bottom: -98px;
+  opacity: .4; }
 
 #myBar {
   position: absolute;
   width: 10%;
   height: 100%;
-  background-color: blue; }
-
-#label {
-  text-align: center;
-  line-height: 30px;
-  color: white; }
+  background-color: #88BCE3; }
 
 /*# sourceMappingURL=styles.css.map */

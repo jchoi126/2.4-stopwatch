@@ -11,40 +11,21 @@ Set up your files as such, this is a good programming practice.
 (function(){
   "use strict";
 
-
-//   var timeOnPage = document.getElementById("time");
-//
-//   var currentTime = new Date();
-//   console.log(currentTime)
-//
-//   timeOnPage.textContent = currentTime;
-//
-// function timeHandler(){
-//     currentTime = new Date();
-//     console.log("currentTime")
-//   }
-//
-// timeOnPage.addEventListener("load",timeHandler)
-
-
-
-
   var colorHover = document.getElementById('hover-time');
   var hours = document.querySelector('.elapsed-time .hours');
   var minutes = document.querySelector('.elapsed-time .minutes');
   var seconds = document.querySelector('.elapsed-time .seconds');
 
-  // var startTime;
-  // var currentText;
-
-  function logElapsedTime(){
-    var currentTime = new Date();
-    // var elapsedTime = currentTime ;
-    var elapsed = millisecondsToInterval(currentTime);
-    console.log(currentTime);
-    // console.log(60/currentTime);      Trying to get the percentages of a minute for time.
-    displayInterval(elapsed);
-  }
+  // function logElapsedTime(){
+  //   var currentTime = new Date();
+  //   // var elapsedTime = currentTime ;
+  //   var elapsed = millisecondsToInterval(currentTime);
+  //   // console.log(currentTime);
+  //   // console.log(60/currentTime);      Trying to get the percentages of a minute for time.
+  //   displayInterval(elapsed);
+  // }
+  // logElapsedTime();
+  //   window.setInterval(logElapsedTime, 1000);
 
 /*
 Found get minutes command via following website.
@@ -54,55 +35,79 @@ http://www.w3schools.com/jsref/jsref_getminutes.asp
       var d = new Date();
       var n = (d.getSeconds()/60*100).toFixed();
       document.getElementById('myBar').style.width = n + '%';
-      console.log(n);
+      // console.log(n);
   }
+minutePercentage();
+window.setInterval(minutePercentage, 1000);
 
-// window.setInterval(minutePercentage, 1000);
 
-  function millisecondsToInterval(ms){ //1000
-    var msLeft = ms; // => 1000
-    var msInHour = 60000 * 60; // 3,600,000
-    var msInMinute = 60000;
-    var msInSecond = 1000;
-    var hourCount = Math.floor(msLeft / msInHour); // => 26
-    msLeft = msLeft % msInHour;  // => 1000 / 3,600,000 =
-    var minuteCount = Math.floor(msLeft / msInMinute);
-    msLeft = msLeft % msInMinute;
-    var secondCount = Math.floor(msLeft / msInSecond);
-    return [hourCount, minuteCount, secondCount];
-  }
+  // function millisecondsToInterval(ms){ //1000
+  //   var msLeft = ms; // => 1000
+  //   var msInHour = 60000 * 60; // 3,600,000
+  //   var msInMinute = 60000;
+  //   var msInSecond = 1000;
+  //   var hourCount = Math.floor(msLeft / msInHour);
+  //   msLeft = msLeft % msInHour;
+  //   var minuteCount = Math.floor(msLeft / msInMinute);
+  //   msLeft = msLeft % msInMinute;
+  //   var secondCount = Math.floor(msLeft / msInSecond);
+  //   return [hourCount, minuteCount, secondCount];
+  // }
 
-  function displayInterval(interval){
-    hours.textContent = ("0" + interval[0]).slice(-2);
-    minutes.textContent = ("0" + interval[1]).slice(-2);
-    seconds.textContent = ("0" + interval[2]).slice(-2);
-  }
 
-  function displayInterHex(interval){
-    hours.textContent = ("0" + interval[0].toString(16)).slice(-2);
-    minutes.textContent = ("0" + interval[1].toString(16)).slice(-2);
-    seconds.textContent = ("0" + interval[2].toString(16)).slice(-2);
+
+function displayInterval(){
+  var time = new Date();
+  var hrs = time.getHours();
+  var mins = time.getMinutes();
+  var secs = time.getSeconds();
+  hours.textContent = ("0" + hrs).slice(-2);
+  minutes.textContent = ("0" + mins).slice(-2);
+  seconds.textContent = ("0" + secs).slice(-2);
+}
+
+displayInterval();
+window.setInterval(displayInterval, 1000);
+
+  function displayHex(){
+    var time = new Date();
+    var hrs = time.getHours();
+    var mins = time.getMinutes();
+    var secs = time.getSeconds();
+    hours.textContent = ("0" + hrs.toString(16)).slice(-2);
+    minutes.textContent = ("0" + mins.toString(16)).slice(-2);
+    seconds.textContent = ("0" + secs.toString(16)).slice(-2);
   }
 
   function colorHoverHandler(){
     console.log();
-    // toggleButton();
     window.setInterval(logElapsedTime, 1000);
   }
 
+colorHover.addEventListener('mouseover', function(){hover = true});
+colorHover.addEventListener('mouseout', function(){hover = false});
 
+var hover = false;
 
-  // function toggleButton(){
-  //   currentText = colorHover.textContent;
-  // }
+function change(){
+  var time = new Date();
+  var hrs = time.getHours();
+  var mins = time.getMinutes();
+  var secs = time.getSeconds();
 
-logElapsedTime();
+  var bgcolor = "#" + ("0" + hrs.toString(16)).slice(-2) + ("0" + mins.toString(16)).slice(-2) + ("0" + secs.toString(16)).slice(-2)
+  console.log(bgcolor);
 
-  window.setInterval(logElapsedTime, 1000);
+  if(hover==true){
+    displayHex();
+    document.getElementById('bgcolor').style.backgroundColor = bgcolor;
 
+  } else {
+    displayInterval();
+    document.getElementById('bgcolor').style.backgroundColor = "white";
+  };
+}
 
-  colorHover.addEventListener('mouseover', colorHoverHandler);
-
-
+window.setInterval(change, 100);
 
 }());
